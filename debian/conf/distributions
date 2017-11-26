@@ -1,0 +1,9 @@
+Origin: wanparty
+Label: wanparty
+Suite: stable
+Codename: wanparty
+Version: 1.0
+Architectures: i386 amd64
+Components: contrib 
+Description: wanparty packages
+SignWith: B6A8ECD713F14270

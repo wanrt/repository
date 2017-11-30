@@ -4,10 +4,13 @@ DEBS_FILES := $(patsubst packages/%/,./%.deb,$(DEB_DIRS))
 %.deb: packages/%
 	dpkg-deb -b $< $@
 
-repo: $(DEBS_FILES)
+debian/dists/wanparty/Release: $(DEBS_FILES) 
 	echo $(DEBS_FILES)
 	cd debian && reprepro -Vb . includedeb wanparty ../*.deb 
 
-.PHONY: clean
+.PHONY: clean cleanall
 clean:
-	rm -rf *.deb debian/pool debian/db debian/dists
+	rm -rf *.deb 
+
+cleanall:
+	rm -rf  debian/pool debian/db debian/dists

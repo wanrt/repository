@@ -9,11 +9,11 @@ DEBS_FILES := $(patsubst packages/%/,./%.deb,$(DEB_DIRS))
 
 debian/dists/wanparty/Release: $(DEBS_FILES) 
 	echo $(DEBS_FILES)
-	cd debian && reprepro -Vb . includedeb wanparty ../*.deb 
+	cd debian && reprepro -Vb . includedeb wanparty ../*.deb && scp -r * sohaibafifi@ssh-sohaibafifi.alwaysdata.net:~/repo.sohaibafifi.com/debian/
 
 .PHONY: clean cleanall
 clean:
-	rm -rf *.deb 
+	rm -rf *.deb debian/db debian/pool debian/dists
 
 cleanall:
 	rm -rf  debian/pool debian/db debian/dists
